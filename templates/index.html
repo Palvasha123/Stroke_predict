@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke Prediction</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #c9eaff, #005c99);
+            padding: 20px;
+        }
+
+        h2 {
+            color: #fff;
+            text-align: center;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 16px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .prediction {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h2>Stroke Prediction</h2>
+    <form action="{{ url_for('predict') }}" method="post">
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" required><br><br>
+
+        <label for="hypertension">Hypertension:(1 for Yes, 0 for No):</label>
+        <input type="text" id="hypertension" name="hypertension" required><br><br>
+
+        <label for="heart_disease">Heart Disease (1 for Yes, 0 for No):</label>
+        <input type="text" id="heart_disease" name="heart disease" required><br><br>
+
+        <label for="avg_glucose_level">Average Glucose Level</label>
+        <input type="text" id="avg_glucose_level" name="avg glucose level" required><br><br>
+
+        <label for="bmi">BMI</label>
+        <input type="text" id="bmi" name="bmi" required><br><br>
+
+        <label for="gender_male">Gender (1 for Male, 0 for Female):</label>
+        <input type="text" id="gender_male" name="gender male" required><br><br>
+
+        <label for="ever_married_yes">Ever Married (1 for yes, 0 for no):</label>
+        <input type="text" id="ever_married_yes" name="v" required><br><br>
+
+        <label for="work_type_never_worked">Work Type (1 for Never Worked, 0 for others):</label>
+        <input type="text" id="work_type_never_worked" name="work type never worked" required><br><br>
+
+        <label for="work_type_Private">Work Type (1 for Private, 0 for others):</label>
+        <input type="text" id="work_type_Private" name="work type Private" required><br><br>
+
+        <label for="work_type_Self-employed">Work Type (1 for self-employed, 0 for others):</label>
+        <input type="text" id="work_type_Self-employed" name="work type Self-employed" required><br><br>
+
+        <label for="work_type_children">Work Type (1 for Children, 0 for others):</label>
+        <input type="text" id="work_type_children" name="work_type_children" required><br><br>
+
+        <label for="Resident_type_urban">Residence Type (1 for Urban, 0 for rural):</label>
+        <input type="text" id="Resident_type_urban" name="Resident_type_urban" required><br><br>
+
+        <label for="smoking_status_formerly smoked">Smoking Status (1 for Formerly Smoked, 0 for others):</label>
+        <input type="text" id="smoking_status_formerly smoked" name="smoking_status_formerly smoked" required><br><br>
+
+        <label for="smoking_status_never smoked">Smoking Status (1 for Never smoked, 0 for others):</label>
+        <input type="text" id="smoking_status_never smoked" name="smoking_status_never smoked" required><br><br>
+
+        <label for="smoking_status_smokes">Smoking Status (1 for Smokes, 0 for others):</label>
+        <input type="text" id="smoking_status_smokes" name="smoking_status_smokes" required><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+    <h2>{{ prediction_text }}</h2>
+    {% endif %}
+</body>
+</html>
